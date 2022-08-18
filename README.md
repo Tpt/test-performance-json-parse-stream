@@ -16,6 +16,7 @@ Considered metrics:
 * [`jsonparse`](https://www.npmjs.com/package/jsonparse)
 * [SAX variant of `jsonparse`](https://gist.github.com/creationix/1821394)
 * [`clarinet`](https://www.npmjs.com/package/clarinet)
+* [`json-event-parser`](https://github.com/Tpt/json-event-parser.js)
 
 ## Executing these measurements
 
@@ -38,11 +39,12 @@ $ comunica-sparql https://fragments.dbpedia.org/2016-04/en 'construct where { ?s
 Results obtained by executing on PrevailPro P3000 (i7-7700HQ, 32GB DDR4).
 
 | Library                    | Execution time | Memory |
-| -------------------------- | -------------- |--------|
-| `stream-json`              | 4.602s         | 90MB   |
-| `jsonparse`                | 3.217s         | 406MB  |
-| SAX variant of `jsonparse` | 2.110s         | 99MB   |
-| `clarinet`                 | 2.736s         | 94MB   |
+|----------------------------|----------------|--------|
+| `stream-json`              | 4.770s         | 89MB   |
+| `jsonparse`                | 3.381s         | 410MB  |
+| SAX variant of `jsonparse` | 1.973s         | 100MB  |
+| `clarinet`                 | 2.425s         | 94MB   |
+| `json-event-parser`        | 2.152s         | 94MB   |
 
 ## License
 

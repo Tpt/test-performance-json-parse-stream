@@ -2,6 +2,7 @@ const StreamJson = require('stream-json');
 const JsonParse = require('jsonparse');
 const JsonParseSax = require('./jsonparse-sax');
 const clarinet = require('clarinet');
+const {JsonEventParser} = require('json-event-parser');
 const fs = require('fs');
 
 const file = process.argv[2];
@@ -87,5 +88,20 @@ function evaluate(label, handler) {
         parser.on("value", function (value) {
         });
         return stream.pipe(parser);
+    });
+
+    await evaluate('json-event-parser', (stream) => {
+        const parser = new JsonEventParser({
+            onEvent(_) {
+                // no-op
+            }
+        });
+        stream.on('end', () => {
+            parser.end();
+        }).on('data', (data) => {
+            parser.write(data);
+        });
+        parser.end();
+        return stream;
     });
 })();
