@@ -9,9 +9,6 @@ Considered metrics:
 
 * Execution time
 * Memory usage
-* Robustness (unit tests)
-* Usage (number of dependents)
-* Maintained (last release)
 
 ## Tested libraries
 
@@ -38,27 +35,14 @@ $ comunica-sparql https://fragments.dbpedia.org/2016-04/en 'construct where { ?s
 
 ## Results
 
-Results obtained by executing on MacBook Pro (13-inch, 2020, Four Thunderbolt 3 ports); 2,3 GHz Quad-Core Intel Core i7; 16 GB 3733 MHz LPDDR4
+Results obtained by executing on PrevailPro P3000 (i7-7700HQ, 32GB DDR4).
 
-| Library                    | Execution time | Memory | Robustness | Usage | Maintained | Notes |
-| -------------------------- | -------------- | ------ | ---------- | ----- | ---------- | ----- |
-| `stream-json`              | 3.626s         | 65MB   | High       | 139   | June 2021  | Extensive documentation |
-| `jsonparse`                | 2.791s         | 384MB  | High       | 175   | 2017       | Accumulates memory! |
-| SAX variant of `jsonparse` | 1.431s         | 72MB   | Low        | 0     | /          | Not a proper npm package |
-| `clarinet`                 | 2.213s         | 67MB   | High       | 33    | 2019       |       |
-
-## Conclusion
-
-Performance-wise, the SAX variant of `jsonparse` is the clear winner.
-However, since it is unmaintained, and no tests are available, it is not recommended.
-
-While `jsonparse` itself is also pretty fast, it suffers from memory issues for large streams (as it still accumulates JSON in memory).
-So this is also a no-go.
-
-`stream-json` and `clarinet` both have acceptable performance and memory usage.
-While `stream-json` is slower than `clarinet`, it seems to be much better maintained, and has extensive documentation and a broader usage.
-
-**Therefore, even though `stream-json` is slower, it may be considered the best library available at the moment for parsing JSON in a streaming manner.**
+| Library                    | Execution time | Memory |
+| -------------------------- | -------------- |--------|
+| `stream-json`              | 4.602s         | 90MB   |
+| `jsonparse`                | 3.217s         | 406MB  |
+| SAX variant of `jsonparse` | 2.110s         | 99MB   |
+| `clarinet`                 | 2.736s         | 94MB   |
 
 ## License
 
